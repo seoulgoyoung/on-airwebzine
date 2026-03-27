@@ -20,7 +20,6 @@
         .animate-subtle-twinkle { animation: subtle-twinkle 2s ease-in-out infinite; }
         .animate-bounce-slow { animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(-5%); } 50% { transform: translateY(0); } }
-        /* 아이콘 기본 스타일 */
         [data-lucide] { display: inline-block; vertical-align: middle; }
     </style>
 </head>
@@ -43,32 +42,32 @@
         const WEBZINE_DATA = [
             {
                 id: 1, month: "3", title: "Start: 다시 피어나는 청년", issue: "Vol. 1",
-                status: "published", thumbnail: "8.jpg",
+                status: "published", thumbnail: "8.png", // jpg -> png 수정
                 description: "3-4월 주요 프로그램 후기부터 생생한 참여자 인터뷰까지, 청년들의 도약을 담은 알찬 콘텐츠를 만나보세요!"
             },
             {
                 id: 2, month: "5", title: "준비 중입니다", issue: "Vol. 2",
-                status: "upcoming", thumbnail: "고드1.jpg",
+                status: "upcoming", thumbnail: "고드1.png", // jpg -> png 수정
                 description: "5월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!"
             },
             {
                 id: 3, month: "7", title: "준비 중입니다", issue: "Vol. 3",
-                status: "upcoming", thumbnail: "고드1.jpg",
+                status: "upcoming", thumbnail: "고드1.png",
                 description: "7월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!"
             },
             {
                 id: 4, month: "9", title: "준비 중입니다", issue: "Vol. 4",
-                status: "upcoming", thumbnail: "고드1.jpg",
+                status: "upcoming", thumbnail: "고드1.png",
                 description: "9월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!"
             },
             {
                 id: 5, month: "11", title: "준비 중입니다", issue: "Vol. 5",
-                status: "upcoming", thumbnail: "고드1.jpg",
+                status: "upcoming", thumbnail: "고드1.png",
                 description: "11월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!"
             },
             {
                 id: 6, month: "12", title: "준비 중입니다", issue: "Vol. 6",
-                status: "upcoming", thumbnail: "고드1.jpg",
+                status: "upcoming", thumbnail: "고드1.png",
                 description: "12월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!"
             }
         ];
@@ -82,12 +81,10 @@
 
             return (
                 <div className="min-h-screen">
-                    {/* 상단 배너 */}
                     <div className="bg-indigo-600 text-white py-2 px-4 text-center text-sm font-medium tracking-wider">
                         🚀 서울고용센터와 함께하는 청년들의 무한한 성장판! 
                     </div>
 
-                    {/* HERO SECTION */}
                     <header className="relative overflow-hidden bg-white border-b border-indigo-50 pt-16 pb-24 md:pt-20 md:pb-36">
                         <div className="absolute top-20 left-[10%] w-32 h-32 bg-yellow-200/40 rounded-full blur-3xl"></div>
                         <div className="max-w-6xl mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center gap-10">
@@ -123,19 +120,17 @@
                                     />
                                 </div>
                             </div>
-                            {/* 리포터 섹션 */}
                             <div className="md:w-2/5 relative">
                                 <div className="absolute -top-12 -left-4 bg-white p-4 rounded-2xl shadow-xl border-2 border-indigo-50 transform -rotate-12 z-20">
                                     <p className="text-indigo-600 font-bold text-sm">서울고용센터 소식 <br/> 제가 다 들고 왔어요! 🎤</p>
                                 </div>
                                 <div className="relative z-10 transform hover:rotate-3 transition-transform duration-500 cursor-pointer">
-                                    <img src="9.jpg" alt="리포터" className="w-full h-auto drop-shadow-2xl rounded-3xl" />
+                                    <img src="9.png" alt="리포터" className="w-full h-auto drop-shadow-2xl rounded-3xl" onError={(e) => e.target.style.display='none'} />
                                 </div>
                             </div>
                         </div>
                     </header>
 
-                    {/* CONTENT SECTION (카드 이미지 크기 축소) */}
                     <main className="max-w-6xl mx-auto px-8 -mt-16 relative z-20 pb-40">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                             {filteredWebzines.map((webzine) => {
@@ -144,7 +139,7 @@
                                     <div key={webzine.id} className={`group relative flex flex-col bg-white rounded-[2.5rem] shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-4 border-4 overflow-hidden ${isPublished ? 'border-white' : 'border-dashed border-indigo-50 opacity-95'}`}>
                                         <div className="relative h-44 md:h-52 overflow-hidden flex items-center justify-center bg-slate-50 shrink-0 border-none">
                                             <img src={webzine.thumbnail} alt={webzine.month} className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${!isPublished ? 'grayscale-[0.5] opacity-80' : ''}`} />
-                                            <div className="absolute top-4 left-4 bg-white/70 backdrop-blur-md px-4 py-1 rounded-full border border-white/30 z-10 shadow-sm">
+                                            <div className="absolute top-4 left-4 bg-white/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30 z-10 shadow-sm">
                                                 <span className="text-slate-900 text-lg font-bold">{webzine.issue}</span>
                                             </div>
                                             {isPublished ? (
@@ -181,7 +176,6 @@
                         </div>
                     </main>
 
-                    {/* FOOTER */}
                     <footer className="bg-white border-t-8 border-yellow-400 pt-24 pb-12 overflow-hidden">
                         <div className="max-w-6xl mx-auto px-8 flex flex-col items-center">
                             <div className="flex items-center gap-4 mb-8">
@@ -190,14 +184,13 @@
                             </div>
                             <p className="text-slate-400 text-center max-w-lg mb-20 text-lg leading-relaxed">이곳은 서울고용센터와 청년들이 함께 만들어가는 <br/>꿈과 도전의 기록 저장소입니다. 우리의 내일을 응원해요!</p>
                             
-                            {/* 캐릭터(좌) & 지도(우) 배치 */}
                             <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-4xl mb-24 px-4">
                                 <div className="relative w-48 md:w-56 shrink-0 transform hover:scale-105 transition-transform duration-500">
                                     <div className="absolute -top-24 left-1/2 -translate-x-1/2 bg-white px-5 py-3 rounded-2xl shadow-2xl border-2 border-indigo-50 whitespace-nowrap z-20 animate-bounce-slow">
                                         <p className="text-indigo-600 font-bold text-sm text-center leading-snug">청년의 꿈을 이뤄주는 <br/> 서울고용센터에 오세요 ✨</p>
                                         <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-b-2 border-r-2 border-indigo-50 rotate-45"></div>
                                     </div>
-                                    <img src="9.jpg" alt="리포터" className="w-full h-auto drop-shadow-2xl rounded-3xl" />
+                                    <img src="9.png" alt="리포터" className="w-full h-auto drop-shadow-2xl rounded-3xl" onError={(e) => e.target.style.display='none'} />
                                 </div>
                                 <div className="flex-grow max-w-sm w-full">
                                     <div className="bg-indigo-50 p-2 rounded-[2rem] shadow-inner mb-4">
@@ -214,7 +207,6 @@
                                 </div>
                             </div>
 
-                            {/* 하단 링크 */}
                             <div className="flex flex-wrap justify-center gap-4 mb-16 font-bold">
                                 <a href="https://www.work.go.kr/seoul/main.do" target="_blank" className="flex items-center gap-2 px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm border-none text-sm"><Icon name="globe" size={16} /> 공식 홈페이지</a>
                                 <a href="https://www.work24.go.kr/cm/main.do" target="_blank" className="flex items-center gap-2 px-6 py-2.5 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm border-none text-sm"><Icon name="layout-grid" size={16} /> 고용24</a>
@@ -234,7 +226,8 @@
             );
         };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
         root.render(<App />);
     </script>
 </body>
