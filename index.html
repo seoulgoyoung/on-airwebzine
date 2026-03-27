@@ -103,7 +103,7 @@
                                     <Icon name="smile" size={24} className="text-indigo-700" />
                                     <span className="text-sm md:text-base flex items-center flex-wrap gap-1">
                                         청년의 꿈과 가능성을 연결하는 취업 지원 허브,
-                                        <span className="text-indigo-700 text-base md:text-lg animate-subtle-twinkle ml-1 flex items-center">
+                                        <span className="text-indigo-700 text-base md:text-lg animate-subtle-twinkle ml-1 flex items-center border-none">
                                             <Icon name="sparkles" size={16} className="mr-0.5" />
                                             서울고용센터
                                             <Icon name="sparkles" size={16} className="ml-0.5" />
@@ -119,7 +119,7 @@
                                     서울고용센터가 청년들과 함께 일궈낸 소중한 조각들을<br />
                                     <span className="text-indigo-600">'청년ON-AIR'</span>에서 확인하세요. ✨
                                 </p>
-                                <div className="relative max-w-lg mx-auto md:mx-0 group">
+                                <div className="relative max-w-lg mx-auto md:mx-0 group border-none">
                                     <Icon name="search" size={24} className="absolute left-5 top-1/2 -translate-y-1/2 text-indigo-400" />
                                     <input 
                                         type="text" 
@@ -135,6 +135,7 @@
                                     <p className="text-indigo-600 font-bold text-sm text-center">서울고용센터 소식 <br/> 제가 다 들고 왔어요! 🎤</p>
                                 </div>
                                 <div className="relative z-10 transform hover:rotate-3 transition-transform duration-500 cursor-pointer">
+                                    {/* 상단에 리포터 캐릭터(300.png)가 잘 뜨도록 설정 */}
                                     <img src="300.png" alt="리포터" className="w-full h-auto drop-shadow-2xl" />
                                 </div>
                             </div>
@@ -147,9 +148,11 @@
                                 const isPublished = webzine.status === 'published';
                                 return (
                                     <div key={webzine.id} className={`group relative flex flex-col ${webzine.cardBg} rounded-[2.5rem] shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-4 border-4 overflow-hidden ${isPublished ? 'border-white' : `border-dashed ${webzine.border} opacity-100`}`}>
-                                        <div className="relative h-36 md:h-40 overflow-hidden flex items-center justify-center bg-white/40 shrink-0 border-none">
-                                            <img src={webzine.thumbnail} alt={webzine.month} className={`w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 ${!isPublished ? 'opacity-80' : ''}`} />
+                                        <div className="relative h-36 md:h-44 overflow-hidden flex items-center justify-center bg-white/30 shrink-0 border-none p-4">
+                                            {/* 캐릭터 이미지를 중앙에 배치하고 크기를 적절히 조절 */}
+                                            <img src={webzine.thumbnail} alt={webzine.month} className={`h-full w-auto object-contain transition-transform duration-700 group-hover:scale-110 ${!isPublished ? 'opacity-90' : ''}`} />
                                             
+                                            {/* Vol. 배지 위치: 왼쪽 상단 */}
                                             <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/50 z-10 shadow-sm text-slate-800">
                                                 <span className="text-sm font-bold">{webzine.issue}</span>
                                             </div>
@@ -157,10 +160,10 @@
                                             {isPublished ? (
                                                 <div className="absolute -right-4 top-2 bg-yellow-400 text-slate-900 px-6 py-1 rounded-full text-[10px] font-black shadow-lg transform rotate-12 animate-pulse z-10 uppercase">NEW OPEN</div>
                                             ) : (
-                                                /* 캐릭터를 가리지 않도록 배지 위치를 우측 상단으로 이동하고 중앙 오버레이 제거 */
-                                                <div className="absolute top-3 right-3 z-20">
-                                                    <div className={`bg-white shadow-md ${webzine.accent} px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1 border border-white/50`}>
-                                                        <Icon name="clock" size={12} />공개 예정
+                                                /* 캐릭터를 절대 가리지 않도록 배지를 오른쪽 하단으로 이동하고 더 작게 수정 */
+                                                <div className="absolute bottom-2 right-3 z-20">
+                                                    <div className={`bg-white/90 shadow-sm ${webzine.accent} px-2 py-0.5 rounded-lg text-[9px] font-black flex items-center gap-1 border border-white/50`}>
+                                                        <Icon name="clock" size={10} />공개 예정
                                                     </div>
                                                 </div>
                                             )}
@@ -176,10 +179,10 @@
                                                 {isPublished ? (
                                                     <div className="grid grid-cols-2 gap-3">
                                                         <a href="#" target="_blank" className="flex items-center justify-center gap-2 bg-indigo-600 text-white py-4 rounded-[1.5rem] font-bold text-base hover:bg-slate-900 transition-all shadow-lg border-none"><Icon name="eye" size={18} />보기</a>
-                                                        <a href="#" download className="flex items-center justify-center gap-2 border-4 border-orange-50 text-indigo-600 py-4 rounded-[1.5rem] font-bold text-base hover:bg-white transition-all shadow-sm"><Icon name="download" size={18} />PDF</a>
+                                                        <a href="#" download className="flex items-center justify-center gap-2 border-4 border-orange-50 text-indigo-600 py-4 rounded-[1.5rem] font-bold text-base hover:bg-white transition-all shadow-sm border-none"><Icon name="download" size={18} />PDF</a>
                                                     </div>
                                                 ) : (
-                                                    <div className={`w-full bg-white/60 ${webzine.accent} py-4 rounded-[1.8rem] font-bold text-center border-2 border-dashed ${webzine.border} flex items-center justify-center gap-2 text-base`}>
+                                                    <div className={`w-full bg-white/40 ${webzine.accent} py-4 rounded-[1.8rem] font-bold text-center border-2 border-dashed ${webzine.border} flex items-center justify-center gap-2 text-base`}>
                                                         <Icon name="clock" size={18} />커밍순!
                                                     </div>
                                                 )}
@@ -194,7 +197,7 @@
                     <footer className="bg-[#FAF8F2] border-t-8 border-yellow-400 pt-24 pb-12 overflow-hidden">
                         <div className="max-w-6xl mx-auto px-8 flex flex-col items-center">
                             <div className="flex items-center gap-4 mb-8">
-                                <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-xl rotate-6 shrink-0"><Icon name="file-text" size={32} className="text-white" /></div>
+                                <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-xl rotate-6 shrink-0 border-none"><Icon name="file-text" size={32} className="text-white" /></div>
                                 <div className="text-left"><span className="text-3xl font-normal text-slate-900 block leading-none text-indigo-600 uppercase">서울고용센터 웹진 아카이브</span><span className="text-slate-400 text-sm font-bold tracking-widest uppercase mt-1 block tracking-tighter">Youth On-Air Studio</span></div>
                             </div>
                             <p className="text-slate-500 text-center max-w-lg mb-20 text-lg leading-relaxed">이곳은 서울고용센터와 청년들이 함께 만들어가는 <br/>꿈과 도전의 기록 저장소입니다. 우리의 내일을 응원해요!</p>
@@ -223,9 +226,9 @@
                             </div>
 
                             <div className="flex flex-wrap justify-center gap-4 mb-16 font-bold">
-                                <a href="https://www.work.go.kr/seoul/main.do" target="_blank" className="flex items-center gap-2 px-6 py-2.5 bg-white text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm border border-orange-50 text-xs"><Icon name="globe" size={14} /> 공식 홈페이지</a>
-                                <a href="https://www.work24.go.kr/cm/main.do" target="_blank" className="flex items-center gap-2 px-6 py-2.5 bg-white text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm border border-orange-50 text-xs"><Icon name="layout-grid" size={14} /> 고용24</a>
-                                <a href="https://www.instagram.com/moel_seoulew/" target="_blank" className="flex items-center gap-2 px-6 py-2.5 bg-white text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm border border-orange-50 text-xs"><Icon name="instagram" size={14} /> 인스타그램</a>
+                                <a href="https://www.work.go.kr/seoul/main.do" target="_blank" className="flex items-center gap-2 px-6 py-2.5 bg-white text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm border border-orange-50 text-xs border-none"><Icon name="globe" size={14} /> 공식 홈페이지</a>
+                                <a href="https://www.work24.go.kr/cm/main.do" target="_blank" className="flex items-center gap-2 px-6 py-2.5 bg-white text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm border border-orange-50 text-xs border-none"><Icon name="layout-grid" size={14} /> 고용24</a>
+                                <a href="https://www.instagram.com/moel_seoulew/" target="_blank" className="flex items-center gap-2 px-6 py-2.5 bg-white text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition-all shadow-sm border border-orange-50 text-xs border-none"><Icon name="instagram" size={14} /> 인스타그램</a>
                             </div>
 
                             <div className="w-full pt-12 border-t border-orange-100 flex flex-col items-center gap-8 border-none">
