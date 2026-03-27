@@ -13,7 +13,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <style>
-        /* 배경색을 부드러운 상아색(#FAF8F2)으로 유지 */
         body { 
             font-family: 'Jua', sans-serif; 
             background-color: #FAF8F2; 
@@ -49,55 +48,37 @@
                 id: 1, month: "3", title: "Start: 다시 피어나는 청년", issue: "Vol. 1",
                 status: "published", thumbnail: "300.png",
                 description: "3-4월 주요 프로그램 후기부터 생생한 참여자 인터뷰까지, 청년들의 도약을 담은 알찬 콘텐츠를 만나보세요!",
-                cardBg: "bg-[#EEF2FF]", // 연한 인디고
-                accent: "text-indigo-600",
-                border: "border-indigo-100",
-                iconBg: "bg-indigo-100/50"
+                cardBg: "bg-[#EEF2FF]", accent: "text-indigo-600", border: "border-indigo-100"
             },
             {
                 id: 2, month: "5", title: "준비 중입니다", issue: "Vol. 2",
                 status: "upcoming", thumbnail: "100.png",
                 description: "5월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!",
-                cardBg: "bg-[#F0FDF4]", // 연한 초록
-                accent: "text-emerald-600",
-                border: "border-emerald-100",
-                iconBg: "bg-emerald-100/50"
+                cardBg: "bg-[#F0FDF4]", accent: "text-emerald-600", border: "border-emerald-100"
             },
             {
                 id: 3, month: "7", title: "준비 중입니다", issue: "Vol. 3",
                 status: "upcoming", thumbnail: "100.png",
                 description: "7월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!",
-                cardBg: "bg-[#FFFBEB]", // 연한 노랑
-                accent: "text-amber-600",
-                border: "border-amber-100",
-                iconBg: "bg-amber-100/50"
+                cardBg: "bg-[#FFFBEB]", accent: "text-amber-600", border: "border-amber-100"
             },
             {
                 id: 4, month: "9", title: "준비 중입니다", issue: "Vol. 4",
                 status: "upcoming", thumbnail: "100.png",
                 description: "9월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!",
-                cardBg: "bg-[#FFF1F2]", // 연한 핑크
-                accent: "text-rose-600",
-                border: "border-rose-100",
-                iconBg: "bg-rose-100/50"
+                cardBg: "bg-[#FFF1F2]", accent: "text-rose-600", border: "border-rose-100"
             },
             {
                 id: 5, month: "11", title: "준비 중입니다", issue: "Vol. 5",
                 status: "upcoming", thumbnail: "100.png",
                 description: "11월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!",
-                cardBg: "bg-[#F5F3FF]", // 연한 보라
-                accent: "text-violet-600",
-                border: "border-violet-100",
-                iconBg: "bg-violet-100/50"
+                cardBg: "bg-[#F5F3FF]", accent: "text-violet-600", border: "border-violet-100"
             },
             {
                 id: 6, month: "12", title: "준비 중입니다", issue: "Vol. 6",
                 status: "upcoming", thumbnail: "100.png",
                 description: "12월호 웹진은 현재 열심히 제작 중입니다. 조금만 기다려주세요!",
-                cardBg: "bg-[#F0FDFA]", // 연한 민트
-                accent: "text-teal-600",
-                border: "border-teal-100",
-                iconBg: "bg-teal-100/50"
+                cardBg: "bg-[#F0FDFA]", accent: "text-teal-600", border: "border-teal-100"
             }
         ];
 
@@ -110,12 +91,10 @@
 
             return (
                 <div className="min-h-screen selection:bg-yellow-200">
-                    {/* 상단 배너 */}
                     <div className="bg-indigo-600 text-white py-2 px-4 text-center text-sm font-medium tracking-wider">
                         🚀 서울고용센터와 함께하는 청년들의 무한한 성장판! 
                     </div>
 
-                    {/* HERO SECTION */}
                     <header className="relative overflow-hidden bg-[#FEFCF8] border-b border-orange-100 pt-16 pb-24 md:pt-20 md:pb-36">
                         <div className="absolute top-20 left-[10%] w-32 h-32 bg-yellow-200/30 rounded-full blur-3xl"></div>
                         <div className="max-w-6xl mx-auto px-8 relative z-10 flex flex-col md:flex-row items-center gap-10">
@@ -162,24 +141,26 @@
                         </div>
                     </header>
 
-                    {/* CONTENT SECTION - 월별 카드 색상 적용 */}
                     <main className="max-w-6xl mx-auto px-8 -mt-16 relative z-20 pb-40">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                             {filteredWebzines.map((webzine) => {
                                 const isPublished = webzine.status === 'published';
                                 return (
-                                    <div key={webzine.id} className={`group relative flex flex-col ${webzine.cardBg} rounded-[2.5rem] shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-4 border-4 overflow-hidden ${isPublished ? 'border-white' : `border-dashed ${webzine.border} opacity-95`}`}>
-                                        <div className="relative h-36 md:h-40 overflow-hidden flex items-center justify-center bg-white/50 shrink-0 border-none">
-                                            <img src={webzine.thumbnail} alt={webzine.month} className={`w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 ${!isPublished ? 'grayscale-[0.1] opacity-70' : ''}`} />
-                                            <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30 z-10 shadow-sm text-slate-900">
-                                                <span className="text-lg font-bold">{webzine.issue}</span>
+                                    <div key={webzine.id} className={`group relative flex flex-col ${webzine.cardBg} rounded-[2.5rem] shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-4 border-4 overflow-hidden ${isPublished ? 'border-white' : `border-dashed ${webzine.border} opacity-100`}`}>
+                                        <div className="relative h-36 md:h-40 overflow-hidden flex items-center justify-center bg-white/40 shrink-0 border-none">
+                                            <img src={webzine.thumbnail} alt={webzine.month} className={`w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 ${!isPublished ? 'opacity-80' : ''}`} />
+                                            
+                                            <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/50 z-10 shadow-sm text-slate-800">
+                                                <span className="text-sm font-bold">{webzine.issue}</span>
                                             </div>
+
                                             {isPublished ? (
                                                 <div className="absolute -right-4 top-2 bg-yellow-400 text-slate-900 px-6 py-1 rounded-full text-[10px] font-black shadow-lg transform rotate-12 animate-pulse z-10 uppercase">NEW OPEN</div>
                                             ) : (
-                                                <div className="absolute inset-0 flex items-center justify-center border-none">
-                                                    <div className={`bg-white/90 ${webzine.accent} px-4 py-1 rounded-full text-[10px] font-bold shadow-sm flex items-center gap-1`}>
-                                                        <Icon name="clock" size={14} />공개 예정
+                                                /* 캐릭터를 가리지 않도록 배지 위치를 우측 상단으로 이동하고 중앙 오버레이 제거 */
+                                                <div className="absolute top-3 right-3 z-20">
+                                                    <div className={`bg-white shadow-md ${webzine.accent} px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1 border border-white/50`}>
+                                                        <Icon name="clock" size={12} />공개 예정
                                                     </div>
                                                 </div>
                                             )}
@@ -195,10 +176,10 @@
                                                 {isPublished ? (
                                                     <div className="grid grid-cols-2 gap-3">
                                                         <a href="#" target="_blank" className="flex items-center justify-center gap-2 bg-indigo-600 text-white py-4 rounded-[1.5rem] font-bold text-base hover:bg-slate-900 transition-all shadow-lg border-none"><Icon name="eye" size={18} />보기</a>
-                                                        <a href="#" download className="flex items-center justify-center gap-2 border-4 border-indigo-100 text-indigo-600 py-4 rounded-[1.5rem] font-bold text-base hover:bg-white transition-all shadow-sm"><Icon name="download" size={18} />PDF</a>
+                                                        <a href="#" download className="flex items-center justify-center gap-2 border-4 border-orange-50 text-indigo-600 py-4 rounded-[1.5rem] font-bold text-base hover:bg-white transition-all shadow-sm"><Icon name="download" size={18} />PDF</a>
                                                     </div>
                                                 ) : (
-                                                    <div className={`w-full bg-white/50 ${webzine.accent} py-4 rounded-[1.8rem] font-bold text-center border-2 border-dashed ${webzine.border} flex items-center justify-center gap-2 text-base`}>
+                                                    <div className={`w-full bg-white/60 ${webzine.accent} py-4 rounded-[1.8rem] font-bold text-center border-2 border-dashed ${webzine.border} flex items-center justify-center gap-2 text-base`}>
                                                         <Icon name="clock" size={18} />커밍순!
                                                     </div>
                                                 )}
@@ -210,7 +191,6 @@
                         </div>
                     </main>
 
-                    {/* FOOTER */}
                     <footer className="bg-[#FAF8F2] border-t-8 border-yellow-400 pt-24 pb-12 overflow-hidden">
                         <div className="max-w-6xl mx-auto px-8 flex flex-col items-center">
                             <div className="flex items-center gap-4 mb-8">
@@ -219,7 +199,6 @@
                             </div>
                             <p className="text-slate-500 text-center max-w-lg mb-20 text-lg leading-relaxed">이곳은 서울고용센터와 청년들이 함께 만들어가는 <br/>꿈과 도전의 기록 저장소입니다. 우리의 내일을 응원해요!</p>
                             
-                            {/* 캐릭터 & 지도 배치 */}
                             <div className="flex flex-col md:flex-row items-center justify-center gap-12 w-full max-w-3xl mb-24 px-4">
                                 <div className="relative w-40 md:w-48 shrink-0 transform hover:scale-105 transition-transform duration-500">
                                     <div className="absolute -top-20 left-1/2 -translate-x-1/2 bg-white px-5 py-3 rounded-2xl shadow-2xl border-2 border-indigo-50 whitespace-nowrap z-20 animate-bounce-slow">
