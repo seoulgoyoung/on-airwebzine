@@ -102,8 +102,8 @@
             {
                 id: 1, month: "3+4", title: "Start: 다시 피어나는 청년", issue: "Vol. 1",
                 status: "published", thumbnail: "300.png", 
-                link: "https://on-air3-4.netlify.app/", // 실전 보기 링크
-                pdf: "https://drive.google.com/file/d/1yiTRk9DRIRi29vOrNlXyQxjRLHEFqth6/view?usp=drive_link", // 실전 PDF 링크
+                link: "https://on-air3-4.netlify.app/", 
+                pdf: "https://drive.google.com/file/d/1yiTRk9DRIRi29vOrNlXyQxjRLHEFqth6/view?usp=drive_link",
                 description: "3-4월 주요 프로그램 후기부터 생생한 참여자 인터뷰까지!",
                 cardBg: "bg-[#EEF2FF]", accent: "text-indigo-600", border: "border-indigo-400"
             },
@@ -130,7 +130,7 @@
 
                     {/* 헤더 섹션 (PC 레이아웃) */}
                     <header className="w-full bg-white border-b border-orange-100 pt-16 pb-28 px-12 overflow-hidden">
-                        <div className="max-w-6xl mx-auto flex items-center justify-between gap-12 text-left">
+                        <div className="max-w-6xl mx-auto flex items-center justify-between gap-12 text-left text-left text-left">
                             <div className="flex-1">
                                 <div className="inline-flex items-center gap-2 bg-yellow-400 text-slate-900 px-6 py-2.5 rounded-full mb-8 font-bold border-2 border-yellow-500/20 shadow-md">
                                     <Icon name="smile" size={24} className="text-indigo-700" />
@@ -164,9 +164,9 @@
                         </div>
                     </header>
 
-                    {/* 메인 콘텐츠 (PC 3열 그리드) */}
+                    {/* 메인 콘텐츠 */}
                     <main className="max-w-6xl w-full px-8 -mt-12 relative z-20 pb-40 text-center">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20 text-center">
                             {filteredWebzines.map((webzine) => {
                                 const isPublished = webzine.status === 'published';
                                 return (
@@ -174,7 +174,6 @@
                                         <div className={`relative h-56 flex items-center justify-center ${isPublished ? 'bg-white/60' : 'bg-transparent'} p-6`}>
                                             <img src={webzine.thumbnail} alt={webzine.month} className="h-full w-auto object-contain transition-transform duration-700 group-hover:scale-110 mx-auto" />
                                             <div className="absolute top-4 left-4 bg-white/80 px-4 py-1.5 rounded-full border border-white/50 text-lg font-bold text-slate-800 shadow-sm">{webzine.issue}</div>
-                                            
                                             {isPublished && (
                                                 <div className="absolute top-4 right-4 z-40">
                                                     <div className="bg-yellow-400 text-slate-900 px-5 py-1.5 rounded-full text-xs font-black shadow-lg border-2 border-white/40 animate-pulse uppercase tracking-wider">OPEN</div>
@@ -184,17 +183,15 @@
                                         <div className="p-10 flex flex-col flex-grow items-center text-center">
                                             <div className={`flex items-center justify-center gap-2 ${webzine.accent} mb-3 font-bold text-xl`}><Icon name="mapPin" size={20} /><span>{webzine.month}월호 웹진</span></div>
                                             <h2 className={`text-2xl font-normal mb-4 leading-tight ${isPublished ? 'text-slate-800' : 'text-slate-400'}`}>{webzine.title}</h2>
-                                            
                                             <p className={`text-base ${isPublished ? 'text-slate-600' : 'text-slate-400'} leading-relaxed mb-10 line-clamp-3 text-center`}>{webzine.description}</p>
-                                            
                                             <div className="mt-auto flex flex-col gap-3 w-full text-center">
                                                 {isPublished ? (
-                                                    <div className="grid grid-cols-2 gap-3">
+                                                    <div className="grid grid-cols-2 gap-3 text-center">
                                                         <a href={webzine.link} target="_blank" className="bg-indigo-600 text-white py-4 rounded-2xl font-bold text-lg active:scale-95 transition-all shadow-md flex items-center justify-center">보기</a>
                                                         <a href={webzine.pdf} target="_blank" className="bg-white border-2 border-indigo-200 text-indigo-600 py-4 rounded-2xl font-bold text-lg active:scale-95 transition-all shadow-sm flex items-center justify-center">PDF</a>
                                                     </div>
                                                 ) : (
-                                                    <div className="w-full bg-slate-200/60 text-slate-500 py-6 rounded-3xl font-bold text-xl border-2 border-dashed border-slate-300 shadow-inner flex items-center justify-center gap-2 uppercase tracking-widest">
+                                                    <div className="w-full bg-slate-200/60 text-slate-500 py-6 rounded-3xl font-bold text-xl border-2 border-dashed border-slate-300 shadow-inner flex items-center justify-center gap-2 uppercase tracking-widest text-center">
                                                         <Icon name="clock" size={24} className="text-slate-400" />
                                                         <span>Coming Soon</span>
                                                     </div>
@@ -206,15 +203,15 @@
                             })}
                         </div>
 
-                        {/* --- Special Archive (PC 가로 바 형태) --- */}
+                        {/* Special Archive */}
                         <div className="max-w-4xl mx-auto bg-white/60 rounded-[2.5rem] border-2 border-amber-200 border-dashed p-7 flex items-center justify-between gap-10 shadow-sm text-left">
-                           <div className="flex items-center gap-6">
+                           <div className="flex items-center gap-6 text-left">
                               <div className="shrink-0 w-14 h-14 bg-amber-100 rounded-full flex items-center justify-center text-amber-500 shadow-sm">
                                 <Icon name="sparkles" size={28} />
                               </div>
                               <div>
-                                <span className="text-amber-600 font-bold text-xs uppercase tracking-tighter block mb-0.5 font-sans text-left">Special Archive</span>
-                                <h2 className="text-2xl text-slate-800 font-bold leading-tight text-left text-left">지난 발자취: 2025년 청년 ON-Lounge</h2>
+                                <span className="text-amber-600 font-bold text-xs uppercase tracking-tighter block mb-0.5 font-sans">Special Archive</span>
+                                <h2 className="text-2xl text-slate-800 font-bold leading-tight">지난 발자취: 2025년 청년 ON-Lounge</h2>
                               </div>
                            </div>
                            <div className="flex gap-4 shrink-0">
@@ -232,24 +229,30 @@
                     <footer className="w-full bg-white border-t-8 border-yellow-400 pt-24 pb-12 text-center flex flex-col items-center">
                         <div className="max-w-6xl mx-auto px-8 flex flex-col items-center text-center">
                             <div className="flex items-center gap-4 mb-8 justify-center">
-                                <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-xl rotate-6 shrink-0 border-none text-white">
+                                <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-xl rotate-6 shrink-0 border-none text-white text-center">
                                     <Icon name="fileText" size={32} />
                                 </div>
-                                <div className="text-left leading-none uppercase text-indigo-600">
+                                <div className="text-left leading-none uppercase text-indigo-600 text-center">
                                     <span className="text-3xl font-normal block">서울고용센터 웹진 아카이브</span>
                                     <span className="text-slate-400 text-sm font-bold tracking-widest block mt-1">Youth On-Air Studio</span>
                                 </div>
                             </div>
-                            <p className="text-slate-500 max-w-lg mb-20 text-lg px-4 leading-relaxed text-center">이곳은 서울고용센터와 청년들이 함께 만들어가는 <br/>꿈과 도전의 기록 저장소입니다. 우리의 내일을 응원해요!</p>
                             
-                            {/* 지도와 캐릭터 배치 (캐릭터 8.png 교체) */}
+                            {/* [수정] mb-20 -> mb-48: 말풍선이 텍스트를 가리지 않도록 공간 확보 */}
+                            <p className="text-slate-500 max-w-lg mb-48 text-lg px-4 leading-relaxed text-center">
+                                이곳은 서울고용센터와 청년들이 함께 만들어가는 <br/>
+                                꿈과 도전의 기록 저장소입니다. 우리의 내일을 응원해요!
+                            </p>
+                            
+                            {/* 지도와 캐릭터 배치 */}
                             <div className="flex flex-col md:flex-row items-end justify-center gap-20 w-full max-w-5xl mb-24 px-4 text-center">
                                 <div className="relative w-56 md:w-80 shrink-0 text-center">
-                                   <div className="absolute -top-32 left-1/2 -translate-x-1/2 bg-white px-7 py-4 rounded-2xl shadow-2xl border-2 border-indigo-50 animate-bounce text-indigo-600 font-bold text-sm whitespace-nowrap z-30">
+                                   {/* 말풍선 위치 최적화 */}
+                                   <div className="absolute -top-36 left-1/2 -translate-x-1/2 bg-white px-7 py-4 rounded-2xl shadow-2xl border-2 border-indigo-50 animate-bounce text-indigo-600 font-bold text-sm whitespace-nowrap z-30 text-center">
                                       청년의 꿈을 이뤄주는 <br/> 서울고용센터에 오세요 ✨
-                                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-b-2 border-r-2 border-indigo-50 rotate-45 text-center"></div>
+                                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-b-2 border-r-2 border-indigo-50 rotate-45"></div>
                                    </div>
-                                   {/* 하단 캐릭터 교체 (8.png) */}
+                                   {/* 캐릭터 8.png 교체 */}
                                    <img src="8.png" alt="캐릭터" className="w-full h-auto drop-shadow-2xl animate-bounce-slow" />
                                 </div>
                                 <div className="flex-grow max-w-md w-full text-center">
@@ -262,18 +265,18 @@
                                 </div>
                             </div>
 
-                            {/* 하단 강조 버튼 (인스타그램 로고 추가) */}
+                            {/* 하단 링크 버튼 */}
                             <div className="flex flex-wrap justify-center gap-6 mb-16 font-bold text-center">
                                 <a href="https://www.work.go.kr/seoul/main.do" target="_blank" 
-                                   className="px-10 py-4 bg-white text-indigo-600 rounded-full border border-indigo-100 hover:bg-indigo-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md text-lg flex items-center gap-2">
+                                   className="px-10 py-4 bg-white text-indigo-600 rounded-full border border-indigo-100 hover:bg-indigo-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md text-lg flex items-center gap-2 text-center">
                                     <Icon name="globe" size={20} /> <span>공식 홈페이지</span>
                                 </a>
                                 <a href="https://www.work24.go.kr/cm/main.do" target="_blank" 
-                                   className="px-10 py-4 bg-white text-indigo-600 rounded-full border border-indigo-100 hover:bg-indigo-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md text-lg flex items-center gap-2">
+                                   className="px-10 py-4 bg-white text-indigo-600 rounded-full border border-indigo-100 hover:bg-indigo-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md text-lg flex items-center gap-2 text-center">
                                     <Icon name="layoutGrid" size={20} /> <span>고용24</span>
                                 </a>
                                 <a href="https://www.instagram.com/moel_seoulew/" target="_blank" 
-                                   className="px-10 py-4 bg-white text-indigo-600 rounded-full border border-indigo-100 hover:bg-indigo-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md text-lg flex items-center gap-2 text-indigo-600">
+                                   className="px-10 py-4 bg-white text-indigo-600 rounded-full border border-indigo-100 hover:bg-indigo-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 shadow-md text-lg flex items-center gap-2 text-indigo-600 text-center">
                                     <Icon name="instagram" size={20} /> <span>인스타그램 바로가기</span>
                                 </a>
                             </div>
@@ -281,9 +284,9 @@
                             <div className="w-full pt-12 border-t border-orange-100 flex flex-col items-center gap-6 border-none text-center">
                                 <div className="flex gap-16 items-center justify-center text-center">
                                     <img src="서울지방고용노동청 로고 (1).png" alt="노동청" className="h-10 w-auto" />
-                                    <img src="서울고용복지플러스센터 bi.png" alt="센터" className="h-10 w-auto" />
+                                    <img src="서울고용복지플러스센터 bi.png" alt="센터" className="h-10 w-auto text-center" />
                                 </div>
-                                <p className="text-slate-400 text-[10px] uppercase tracking-widest mt-2 text-center">© 2026 Seoul Employment Center. All Rights Reserved.</p>
+                                <p className="text-slate-400 text-[10px] uppercase tracking-widest mt-2 text-center text-center">© 2026 Seoul Employment Center. All Rights Reserved.</p>
                             </div>
                         </div>
                     </footer>
