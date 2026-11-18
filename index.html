@@ -97,7 +97,7 @@
                 link: "https://on-air3-4.netlify.app/",
                 pdf: "https://drive.google.com/file/d/1yiTRk9DRIRi29vOrNlXyQxjRLHEFqth6/view?usp=drive_link",
                 description: "3-4월 주요 프로그램 후기부터 생생한 참여자 인터뷰까지!",
-                cardBg: "bg-[#EEF2FF]", accent: "text-indigo-600", border: "border-indigo-400"
+                cardBg: "bg-white/70", accent: "text-indigo-600", border: "border-slate-200"
             },
             {
                 id: 2, month: "5+6", title: "성장의 계절, 함께 비상하는 청년", issue: "Vol. 2", 
@@ -105,7 +105,7 @@
                 link: "https://webzine56.netlify.app/", 
                 pdf: "https://drive.google.com/file/d/1yruj_Oy8g13jN2B17FlTyBaBbTNgQo0U/view?usp=sharing",  
                 description: "5-6월의 따스한 소식들과 청년들의 성장을 응원하는 이야기들을 담았습니다.", 
-                cardBg: "bg-[#EEF2FF]", accent: "text-indigo-600", border: "border-indigo-400" 
+                cardBg: "bg-white/70", accent: "text-indigo-600", border: "border-slate-200" 
             },
             {
                 id: 3, month: "7+8", title: "Light-up: 빛나는 청년", issue: "Vol. 3", 
@@ -113,7 +113,7 @@
                 link: "https://webzine07-08.netlify.app/", 
                 pdf: "https://drive.google.com/file/d/1TPiPKzS5hUE3BSl1RUb7Mptaso91TTVO/view?usp=drive_link", 
                 description: "주요 프로그램 후기부터 취업 성공 수기까지!", 
-                cardBg: "bg-[#EEF2FF]", accent: "text-indigo-600", border: "border-indigo-400" 
+                cardBg: "bg-white/70", accent: "text-indigo-600", border: "border-slate-200" 
             },
             {
                 id: 4, month: "9+10", title: "Level-up: 성장하는 청년", issue: "Vol. 4", 
@@ -121,7 +121,7 @@
                 link: "https://beautiful-pudding-972efa.netlify.app", 
                 pdf: "https://drive.google.com/file/d/1ZzAIJB5FUzQnyFFCC7LnsXF972gzCYgg/view?usp=drive_link", 
                 description: "풍성한 행사와 프로그램 후기부터 현직자 인터뷰까지!!", 
-                cardBg: "bg-[#EEF2FF]", accent: "text-indigo-600", border: "border-indigo-400" 
+                cardBg: "bg-white/70", accent: "text-indigo-600", border: "border-slate-200" 
             },
             {
                 id: 5, month: "11", title: "Power-up: 완성되는 청년", issue: "Vol. 5", 
@@ -186,12 +186,14 @@
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20 text-center">
                             {filteredWebzines.map((webzine) => {
                                 const isPublished = webzine.status === 'published';
+                                const isLatest = webzine.month === "11"; // 최신 오픈월호(11월호) 판정
+                                
                                 return (
-                                    <div key={webzine.id} className={`flex flex-col ${webzine.cardBg} rounded-[2.5rem] transition-all duration-500 border-4 ${isPublished ? `border-indigo-400 shadow-2xl scale-105 z-10` : `border-dashed border-slate-200 opacity-80 grayscale-[0.2]`}`}>
+                                    <div key={webzine.id} className={`flex flex-col ${webzine.cardBg} rounded-[2.5rem] transition-all duration-500 border-4 ${isLatest ? `border-indigo-400 shadow-2xl scale-105 z-10` : isPublished ? `border-slate-200 shadow-md` : `border-dashed border-slate-200 opacity-80 grayscale-[0.2]`}`}>
                                         <div className={`relative h-56 flex items-center justify-center ${isPublished ? 'bg-white/60' : 'bg-transparent'} p-6`}>
                                             <img src={webzine.thumbnail} alt={webzine.month} className="h-full w-auto object-contain transition-transform duration-700 group-hover:scale-110 mx-auto" />
                                             <div className="absolute top-4 left-4 bg-white/80 px-4 py-1.5 rounded-full border border-white/50 text-lg font-bold text-slate-800 shadow-sm">{webzine.issue}</div>
-                                            {isPublished && (
+                                            {isLatest && (
                                                 <div className="absolute top-4 right-4 z-40">
                                                     <div className="bg-yellow-400 text-slate-900 px-5 py-1.5 rounded-full text-xs font-black shadow-lg border-2 border-white/40 animate-pulse uppercase tracking-wider">OPEN</div>
                                                 </div>
